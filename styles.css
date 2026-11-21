@@ -88,3 +88,62 @@ html[data-theme="dark"] .carousel-step:hover{color:var(--accent)}
 .project-card.featured:hover{background:transparent}
 @media(max-width:760px){.project-card{grid-template-columns:30px minmax(0,1fr) 132px}.project-link{font-size:9px}}
 @media(max-width:560px){.project-card{grid-template-columns:24px minmax(0,1fr);align-items:start}.project-actions{grid-column:2;align-items:flex-end;gap:9px;padding-top:8px}.project-link{font-size:9px}.project-link .project-arrow{width:14px;height:14px}}
+
+/* Header controls: clear social marks, language picker and light/dark switch. */
+.header-actions{display:flex;align-items:center;gap:14px}
+.header-socials{display:flex;align-items:center;gap:9px}
+.header-social{display:grid;place-items:center;width:22px;height:26px;color:var(--ink);transition:color .2s ease}
+.header-social:hover{color:var(--accent)}
+.header-social svg{width:15px;height:15px;fill:currentColor}
+.language-toggle,.theme-toggle{display:flex;align-items:center;gap:2px;width:auto;height:30px;padding:2px;border:1px solid var(--line);border-radius:5px;background:transparent}
+.language-toggle button,.theme-toggle button{min-height:24px;padding:0 7px;border:0;border-radius:3px;background:transparent;color:var(--muted);font:10px var(--mono);cursor:pointer;transition:background .2s ease,color .2s ease}
+.language-toggle button[aria-pressed="true"],.theme-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.language-toggle button:focus-visible,.theme-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:760px){.site-header nav{display:none}.header-actions{gap:8px}}
+@media(max-width:560px){.site-header{height:60px}.header-actions{gap:6px}.header-socials{gap:4px}.header-social{width:18px}.header-social svg{width:14px;height:14px}.language-toggle,.theme-toggle{height:27px;gap:0}.language-toggle button,.theme-toggle button{min-height:21px;padding-inline:5px;font-size:8px}}
+@media(max-width:360px){.site-header .wordmark{gap:6px;font-size:8px}.site-header .mark{width:25px;height:25px}.header-actions{gap:4px}.header-social{width:16px}.language-toggle button,.theme-toggle button{padding-inline:4px;font-size:7px}}
+
+/* Gallery navigation sits beside the photograph; the small dots remain below it. */
+.photo-carousel{position:relative;overflow:visible}
+.photo-nav{position:absolute;top:calc((100% - 31px)/2);left:-27px;z-index:8;pointer-events:none}
+.photo-nav-right{left:auto;right:-27px}
+.photo-arrow{display:grid;place-items:center;width:30px;height:34px;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);box-shadow:0 4px 12px #24231b12;cursor:pointer;pointer-events:auto;transition:color .2s ease,border-color .2s ease,transform .2s ease}
+.photo-arrow svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.photo-arrow:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.photo-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:560px){.photo-nav{top:calc((100% - 27px)/2);left:-17px}.photo-nav-right{left:auto;right:-17px}.photo-arrow{width:24px;height:30px;background:var(--paper)}}
+
+/* Official logo files keep their original artwork and aspect ratio inside equal-size wells. */
+.employer-logo{display:grid;place-items:center;width:76px;height:56px;min-height:56px;padding:5px;justify-self:end;background:#fff;border:1px solid #deded6;border-radius:3px}
+.employer-logo img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:normal}
+.logo-dtcc img{width:100%;height:100%;max-width:100%;max-height:100%}
+.logo-qrt{width:76px;height:56px;min-height:56px;padding:4px;background:#182947;border-color:#182947}
+.logo-qrt img{width:100%;height:100%;max-width:100%;max-height:100%}
+.logo-db img{width:46px;height:46px}
+@media(max-width:760px){.timeline-item{grid-template-columns:62px 14px minmax(0,1fr) 92px}.employer-logo,.logo-qrt{width:76px;height:56px;min-height:56px}}
+@media(max-width:560px){.timeline-item{grid-template-columns:minmax(0,1fr) 80px}.employer-logo,.logo-qrt{grid-area:logo;width:72px;height:52px;min-height:52px}.logo-db img{width:44px;height:44px}}
+@media(max-width:360px){.timeline-item{grid-template-columns:minmax(0,1fr) 76px}.employer-logo,.logo-qrt{width:68px;height:50px;min-height:50px}}
+
+/* Every available project destination is a quiet, consistent arrow at the row edge. */
+.project-card{grid-template-columns:38px minmax(0,1fr) 40px;align-items:center}
+.project-actions{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:4px;min-width:0}
+.project-link{display:grid;place-items:center;width:30px;height:30px;color:var(--accent);border:0;border-radius:50%;transition:background .2s ease,color .2s ease}
+.project-link .project-arrow{display:block;width:16px;height:16px;margin:0;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.project-link:hover{background:#be4b3512}
+.project-link:hover .project-arrow{transform:translate(2px,-2px)}
+.project-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.project-card.featured:hover{background:#f2f0e9}
+@media(max-width:760px){.project-card{grid-template-columns:30px minmax(0,1fr) 36px}}
+@media(max-width:560px){.project-card{grid-template-columns:24px minmax(0,1fr) 30px;align-items:start}.project-actions{grid-column:auto;align-items:flex-end;gap:2px;padding-top:0}.project-link{width:26px;height:26px}.project-link .project-arrow{width:14px;height:14px}}
+
+html[data-theme="dark"] .header-social{color:var(--social-txt)}
+html[data-theme="dark"] .header-social:hover{color:var(--accent)}
+html[data-theme="dark"] .language-toggle,html[data-theme="dark"] .theme-toggle{border-color:var(--line)}
+html[data-theme="dark"] .language-toggle button,html[data-theme="dark"] .theme-toggle button{color:var(--quiet)}
+html[data-theme="dark"] .language-toggle button[aria-pressed="true"],html[data-theme="dark"] .theme-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+html[data-theme="dark"] .photo-arrow{background:var(--paper);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] .photo-arrow:hover{color:var(--accent);border-color:var(--accent)}
+html[data-theme="dark"] .employer-logo{background:#fff;border-color:#e4e2dc}
+html[data-theme="dark"] .logo-qrt{background:#182947;border-color:#182947}
+html[data-theme="dark"] .project-link:hover{background:#f08a7018}
+html[data-theme="dark"] .project-card.featured:hover{background:#222720}
