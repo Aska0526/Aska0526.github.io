@@ -1,2 +1,50 @@
 // Keep the footer year current without adding a build step.
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
+
+// A small, keyboard-friendly photo stack for the portrait, cats, and travel map.
+const carousel = document.getElementById("profile-carousel");
+if (carousel) {
+  const slides = [...carousel.querySelectorAll(".photo-slide")];
+  const buttons = [...carousel.querySelectorAll("[data-slide-to]")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let active = 0;
+  let timer;
+
+  function showSlide(index) {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("is-active", i === active);
+      slide.setAttribute("aria-hidden", String(i !== active));
+    });
+    buttons.forEach((button, i) => button.setAttribute("aria-pressed", String(i === active)));
+  }
+
+  function stopRotation() {
+    window.clearInterval(timer);
+    timer = undefined;
+  }
+
+  function startRotation() {
+    if (reducedMotion || timer || document.hidden) return;
+    timer = window.setInterval(() => showSlide(active + 1), 6000);
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      showSlide(Number(button.dataset.slideTo));
+      stopRotation();
+      startRotation();
+    });
+  });
+
+  carousel.addEventListener("mouseenter", stopRotation);
+  carousel.addEventListener("mouseleave", startRotation);
+  carousel.addEventListener("focusin", stopRotation);
+  carousel.addEventListener("focusout", (event) => {
+    if (!carousel.contains(event.relatedTarget)) startRotation();
+  });
+  document.addEventListener("visibilitychange", () => document.hidden ? stopRotation() : startRotation());
+  showSlide(0);
+  startRotation();
+}

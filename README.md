@@ -13,4 +13,4 @@ Open `index.html` in a browser, or serve this folder with any static file server
 3. In **Settings → Pages**, choose **Deploy from a branch**, then select `main` and `/ (root)` if Pages is not already configured.
 4. GitHub Pages publishes the site at <https://aska0526.github.io/> after deployment.
 
-The portrait is bundled locally in `assets/chao-fan.jpg`. Project links point to the public GitHub repositories and report supplied for this site.
+The portrait, cat photo, and travel map are bundled locally in `assets/`. The photo stack rotates through them automatically and pauses for keyboard focus or pointer hover. Project links point to the public GitHub repositories and report supplied for this site.
