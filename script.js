@@ -7,6 +7,7 @@ const carousel = document.getElementById("profile-carousel");
 if (carousel) {
   const slides = [...carousel.querySelectorAll(".photo-slide")];
   const buttons = [...carousel.querySelectorAll("[data-slide-to]")];
+  const stepButtons = [...carousel.querySelectorAll("[data-slide-step]")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let active = 0;
   let timer;
@@ -30,12 +31,17 @@ if (carousel) {
     timer = window.setInterval(() => showSlide(active + 1), 6000);
   }
 
+  function chooseSlide(index) {
+    showSlide(index);
+    stopRotation();
+    startRotation();
+  }
+
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      showSlide(Number(button.dataset.slideTo));
-      stopRotation();
-      startRotation();
-    });
+    button.addEventListener("click", () => chooseSlide(Number(button.dataset.slideTo)));
+  });
+  stepButtons.forEach((button) => {
+    button.addEventListener("click", () => chooseSlide(active + Number(button.dataset.slideStep)));
   });
 
   carousel.addEventListener("mouseenter", stopRotation);
@@ -47,4 +53,26 @@ if (carousel) {
   document.addEventListener("visibilitychange", () => document.hidden ? stopRotation() : startRotation());
   showSlide(0);
   startRotation();
+}
+
+// Follow the device appearance by default; keep an explicit choice for next time.
+const themeToggle = document.getElementById("theme-toggle");
+const root = document.documentElement;
+const themeColor = document.querySelector('meta[name="theme-color"]');
+if (themeToggle) {
+  function setTheme(theme, save = false) {
+    root.dataset.theme = theme;
+    const dark = theme === "dark";
+    themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    themeToggle.setAttribute("title", dark ? "Switch to light mode" : "Switch to dark mode");
+    themeToggle.setAttribute("aria-pressed", String(dark));
+    if (themeColor) themeColor.setAttribute("content", dark ? "#171a17" : "#f8f7f2");
+    if (save) {
+      try { localStorage.setItem("theme", theme); } catch {}
+    }
+  }
+  setTheme(root.dataset.theme || "light");
+  themeToggle.addEventListener("click", () => {
+    setTheme(root.dataset.theme === "dark" ? "light" : "dark", true);
+  });
 }
