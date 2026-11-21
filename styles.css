@@ -147,3 +147,13 @@ html[data-theme="dark"] .employer-logo{background:#fff;border-color:#e4e2dc}
 html[data-theme="dark"] .logo-qrt{background:#182947;border-color:#182947}
 html[data-theme="dark"] .project-link:hover{background:#f08a7018}
 html[data-theme="dark"] .project-card.featured:hover{background:#222720}
+
+/* Employer marks use the source SVG artwork directly on the page surface. */
+.employer-logo{background:transparent;border:0;border-radius:0;padding:0}
+.logo-qrt{width:50px;height:56px;min-height:56px;background:#182947;border:0;border-radius:3px;padding:1px}
+.logo-qrt img{width:48px;height:55px;object-fit:contain}
+.logo-db img{width:46px;height:46px}
+@media(max-width:560px){.employer-logo,.logo-qrt{width:50px;height:56px;min-height:56px}.logo-qrt img{width:48px;height:55px}.logo-db img{width:44px;height:44px}}
+@media(max-width:360px){.employer-logo,.logo-qrt{width:48px;height:54px;min-height:54px}.logo-qrt img{width:46px;height:53px}}
+html[data-theme="dark"] .employer-logo{background:transparent;border-color:transparent}
+html[data-theme="dark"] .logo-qrt{background:#182947;border-color:transparent}
