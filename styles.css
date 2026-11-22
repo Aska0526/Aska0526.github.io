@@ -158,7 +158,6 @@ html[data-theme="dark"] .project-card.featured:hover{background:#222720}
 html[data-theme="dark"] .employer-logo{background:transparent;border-color:transparent}
 html[data-theme="dark"] .logo-qrt{background:#182947;border-color:transparent}
 
-.cn-name{display:inline-block;margin-left:10px;font-family:"DM Sans",sans-serif;font-size:.42em;font-style:normal;font-weight:500;letter-spacing:.06em;vertical-align:middle;color:var(--muted)}
 .project-link.named{display:flex;width:auto;height:28px;gap:7px;padding:0 2px;border-radius:0;font:inherit;font-size:11px;color:var(--accent)}
 .project-link.named .project-arrow{width:14px;height:14px}
 .project-link.named:hover{background:transparent}
@@ -167,4 +166,8 @@ html[data-theme="dark"] .logo-qrt{background:#182947;border-color:transparent}
 .certificate-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 2px;border-bottom:1px solid var(--line);color:var(--ink);font-size:13px;text-decoration:none}
 .certificate-item .project-arrow{flex:none;color:var(--accent)}
 .certificate-item:hover{color:var(--accent)}
-@media(max-width:560px){.cn-name{margin-left:5px;font-size:.36em}.project-link.named{font-size:10px}.certificate-item{font-size:11px}}
+@media(max-width:560px){.project-link.named{font-size:10px}.certificate-item{font-size:11px}}
+.name-en,.name-zh{display:inline}
+.name-zh{display:none}
+html[lang^="zh"] .name-en{display:none}
+html[lang^="zh"] .name-zh{display:inline}
