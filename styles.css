@@ -171,3 +171,6 @@ html[data-theme="dark"] .logo-qrt{background:#182947;border-color:transparent}
 .name-zh{display:none}
 html[lang^="zh"] .name-en{display:none}
 html[lang^="zh"] .name-zh{display:inline}
+
+.name-zh{font-family:"Noto Serif SC","Songti SC","STSong","Source Han Serif SC",serif;font-size:1em;font-style:normal;font-weight:600;letter-spacing:.12em}
+.name-zh em{font-family:inherit;font-style:normal;font-weight:inherit}
